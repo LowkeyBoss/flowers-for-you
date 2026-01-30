@@ -1,44 +1,64 @@
-const flower = document.querySelector(".flower");
-const message = document.querySelector(".message");
+const envelope = document.getElementById("envelope");
+const intro = document.getElementById("intro");
+const book = document.getElementById("book");
+const sections = document.getElementById("sections");
+
+const flowers = document.getElementById("flowers");
+
 const bgMusic = document.getElementById("bg-music");
-
-const messages = [
-  "You're my happy pill ☀️",
-  "I love you more each day, Ica 💖",
-  "You make my world bloom 🌸",
-  "Thank you for being you 💜",
-  "My heart blossoms for you 🌷",
-  "Forever yours 💕",
-  "Your smile makes my day ✨",
-  "With you, life is sweeter 🍯",
-];
-
-let blooming = false;
-
-flower.addEventListener("click", () => {
-  if (bgMusic.paused) {
-    bgMusic.play();
-  }
-
-  blooming = !blooming;
-  flower.classList.toggle("bloom");
-
-  if (blooming) {
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    message.textContent = randomMessage;
-
-    confetti({
-      particleCount: 100,
-      spread: 100,
-      origin: { y: 0.6 },
-    });
-  } else {
-    message.textContent = "";
-  }
-});
-
 const musicToggle = document.getElementById("music-toggle");
 
+const pages = document.querySelectorAll(".page");
+let currentPage = 0;
+let opened = false;
+
+/* Envelope Click */
+envelope.addEventListener("click", () => {
+  if (opened) return;
+  opened = true;
+
+  envelope.classList.add("open");
+
+  /* Start Music */
+  bgMusic.play();
+
+  /* Confetti */
+  confetti({
+    particleCount: 180,
+    spread: 120,
+    origin: { y: 0.6 },
+  });
+
+  /* Flowers appear */
+  flowers.style.display = "block";
+
+  /* Unlock scrolling */
+  setTimeout(() => {
+    document.body.classList.remove("locked");
+  }, 1200);
+
+  /* Show content */
+  setTimeout(() => {
+    intro.style.display = "none";
+    book.classList.remove("hidden");
+    sections.classList.remove("hidden");
+  }, 1500);
+});
+
+/* Page Navigation */
+document.getElementById("next").addEventListener("click", () => {
+  pages[currentPage].classList.remove("active");
+  currentPage = (currentPage + 1) % pages.length;
+  pages[currentPage].classList.add("active");
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+  pages[currentPage].classList.remove("active");
+  currentPage = (currentPage - 1 + pages.length) % pages.length;
+  pages[currentPage].classList.add("active");
+});
+
+/* Music Toggle */
 musicToggle.addEventListener("click", () => {
   if (bgMusic.paused) {
     bgMusic.play();

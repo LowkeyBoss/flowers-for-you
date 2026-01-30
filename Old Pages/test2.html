@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For You 💌</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+
+  <body>
+    
+    <!-- Music -->
+    <audio id="bg-music" src="music/love like you.mp3" loop></audio>
+
+    <!-- Envelope Screen -->
+    <div class="container">
+      <div class="envelope" id="envelope">
+        <div class="flap"></div>
+
+        <div class="front">
+          <p>
+            To: My Love ❤️ <br />
+            From: Your Valentine 💕
+          </p>
+          <span>Click to Open 💌</span>
+        </div>
+      </div>
+
+      <p class="message" id="message">Click the envelope 💌</p>
+    </div>
+
+    <!-- Full Letter Pages -->
+    <div class="book hidden" id="book">
+      <div class="page active">
+        <h1>My Love Letter 💖</h1>
+        <p>
+          Happy Valentine’s Day, my love.<br /><br />
+          I wanted to give you something special, something you can keep forever.
+          Every moment with you feels like magic, and I’m so grateful for you.<br /><br />
+          I love you endlessly. ❤️
+        </p>
+      </div>
+
+      <div class="page">
+        <h1>Our Moments 📸</h1>
+        <img src="images/memory1.png" />
+        <p>This was one of my favorite days with you 💕</p>
+      </div>
+
+      <div class="page">
+        <h1>More Memories 🌸</h1>
+        <img src="images/memory2.png" />
+        <p>I’ll never forget this moment ❤️</p>
+      </div>
+
+      <div class="page">
+        <h1>Forever Us ✨</h1>
+        <img src="images/memory3.png" />
+        <p>You are my favorite person in the world 💖</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="nav">
+        <button id="prev">⬅</button>
+        <button id="next">➡</button>
+      </div>
+    </div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle">🎵</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

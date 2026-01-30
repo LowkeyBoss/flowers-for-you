@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For You 💌</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+
+  <!-- Scroll locked until envelope opens -->
+  <body class="locked">
+    
+    <!-- Floating Flowers Background -->
+    <div class="flowers" id="flowers">
+      <span style="left: 10%; animation-delay: 0s;">🌸</span>
+      <span style="left: 25%; animation-delay: 2s;">🌷</span>
+      <span style="left: 40%; animation-delay: 4s;">🌹</span>
+      <span style="left: 60%; animation-delay: 1s;">💐</span>
+      <span style="left: 75%; animation-delay: 3s;">🌺</span>
+      <span style="left: 90%; animation-delay: 5s;">🌸</span>
+    </div>
+
+    <!-- Music -->
+    <audio id="bg-music" src="music/love like you.mp3" loop></audio>
+
+    <!-- Envelope Screen -->
+    <div class="container" id="intro">
+      <div class="envelope" id="envelope">
+        <div class="flap"></div>
+
+        <div class="front">
+          <p>
+            To: My Love ❤️ <br />
+            From: Your Valentine 💕
+          </p>
+          <span>Click to Open 💌</span>
+        </div>
+      </div>
+
+      <p class="message" id="message">Click the envelope 💌</p>
+    </div>
+
+    <!-- Book Section -->
+    <div class="book hidden" id="book">
+      <!-- Pages -->
+      <div class="page active">
+        <h1>My Love Letter 💖</h1>
+        <p>
+          Happy Valentine’s Day, my love.<br /><br />
+          I wanted to give you something special, something you can keep forever.
+          Every moment with you feels like magic, and I’m so grateful for you.<br /><br />
+          I love you endlessly. ❤️
+        </p>
+      </div>
+
+      <div class="page">
+        <h1>Our Moments 📸</h1>
+        <img src="images/memory1.png" />
+        <p>This was one of my favorite days with you 💕</p>
+      </div>
+
+      <div class="page">
+        <h1>More Memories 🌸</h1>
+        <img src="images/memory2.png" />
+        <p>I’ll never forget this moment ❤️</p>
+      </div>
+
+      <div class="page">
+        <h1>Forever Us ✨</h1>
+        <img src="images/memory3.png" />
+        <p>You are my favorite person in the world 💖</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="nav">
+        <button id="prev">⬅</button>
+        <button id="next">➡</button>
+      </div>
+    </div>
+
+    <!-- Scroll Sections After Book -->
+    <div class="sections hidden" id="sections">
+
+      <!-- Facts Section -->
+      <section class="info-section">
+        <h2>Things I Love About You 💗</h2>
+        <ul>
+          <li>You always know how to make me smile.</li>
+          <li>Your kindness is the most beautiful thing about you.</li>
+          <li>You make even ordinary days feel special.</li>
+          <li>You are my safe place.</li>
+          <li>I love everything that makes you *you*.</li>
+        </ul>
+      </section>
+
+      <!-- Characters Section -->
+      <section class="info-section">
+        <h2>Your Favorite Fictional Characters ✨</h2>
+        <div class="cards">
+          <div class="card">Character #1</div>
+          <div class="card">Character #2</div>
+          <div class="card">Character #3</div>
+          <div class="card">Character #4</div>
+        </div>
+        <p class="small-note">
+          I love how passionate you are about the things you enjoy 💕
+        </p>
+      </section>
+
+      <!-- Ending -->
+      <section class="info-section ending">
+        <h2>Forever & Always 💌</h2>
+        <p>
+          No matter what happens, I want you to always remember one thing:
+          you are deeply loved, endlessly appreciated, and my favorite person
+          in the world. ❤️
+        </p>
+      </section>
+
+    </div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle">🎵</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

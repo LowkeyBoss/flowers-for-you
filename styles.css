@@ -1,69 +1,257 @@
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to top left, #fce4ec, #e1bee7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Locked Scroll Until Envelope Opens */
+body.locked {
   overflow: hidden;
 }
 
-.container {
-  text-align: center;
-}
-
-.flower {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  cursor: pointer;
-  margin: 0 auto;
-  transition: transform 1s ease;
-}
-
-.petal {
-  --i: 0;
-  position: absolute;
-  width: 60px;
-  height: 90px;
-  background: radial-gradient(circle, #9c27b0, #6a1b9a);
-  border-radius: 50% 50% 0 0;
-  top: 30px;
-  left: 30px;
-  transform: rotate(calc(var(--i) * 45deg)) translateY(-20px) scale(0.8);
-  transform-origin: bottom center;
-  transition: transform 1s ease;
-}
-
-.center {
+/* Floating Flowers Background */
+.flowers {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
   display: none;
 }
 
+.flowers span {
+  position: absolute;
+  font-size: 30px;
+  opacity: 0.25;
+  animation: floatUp 12s linear infinite;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(110vh) rotate(0deg);
+  }
+  to {
+    transform: translateY(-10vh) rotate(360deg);
+  }
+}
+
+/* Intro Container (Envelope Centered) */
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Envelope */
+.envelope {
+  position: relative;
+  width: 420px;
+  height: 280px;
+  background: white;
+  border-radius: 18px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 3px solid #c2185b;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transition: transform 0.8s ease;
+}
+
+/* Heart Seal */
+.envelope::after {
+  content: "❤️";
+  position: absolute;
+  bottom: 25px;
+  font-size: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Envelope Flap */
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to bottom, #f8bbd0, #f48fb1);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 1s ease;
+}
+
+/* Envelope Front Text */
+.front {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #6a1b9a;
+  font-size: 20px;
+}
+
+.front span {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #c2185b;
+}
+
+/* Envelope Open Animation */
+.envelope.open {
+  transform: scale(1.05);
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+/* Message Under Envelope */
 .message {
   margin-top: 25px;
-  font-size: 1.8rem;
-  color: #fff;
+  font-size: 1.5rem;
+  color: white;
   font-weight: bold;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.flower.bloom {
-  transform: rotate(360deg);
+/* Hidden Utility */
+.hidden {
+  display: none;
 }
 
-.flower.bloom .petal {
-  transform: rotate(calc(var(--i) * 45deg)) translateY(-80px) scale(1);
+/* Book (Perfectly Centered Like Envelope) */
+.book {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90%;
+  max-width: 650px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 25px;
+  padding: 45px 35px;
+
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+
+  z-index: 10;
+  animation: popUp 0.8s ease;
 }
 
-.flower.bloom + .message {
-  opacity: 1;
-  transform: translateY(0);
+/* Book Entrance Animation */
+@keyframes popUp {
+  from {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
+/* Pages */
+.page {
+  display: none;
+  animation: fadeIn 0.6s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+/* Page Fade */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Images Inside Pages */
+.page img {
+  width: 90%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 20px;
+  border: 3px solid #c2185b;
+}
+
+/* Titles */
+h1 {
+  color: #c2185b;
+  margin-bottom: 15px;
+}
+
+/* Lists Inside Pages */
+.page ul {
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 25px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Character Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card {
+  background: rgba(255, 182, 193, 0.35);
+  padding: 15px;
+  border-radius: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #6a1b9a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Small Note Text */
+.small-note {
+  margin-top: 20px;
+  font-size: 1rem;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* Navigation Buttons */
+.nav {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav button {
+  background: #c2185b;
+  border: none;
+  color: white;
+  font-size: 22px;
+  padding: 12px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.nav button:hover {
+  transform: scale(1.1);
+}
+
+/* Music Toggle Button */
 #music-toggle {
   position: fixed;
   top: 20px;
@@ -72,13 +260,37 @@ body {
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 100;
 }
 
+/* Mobile Responsive Fix */
 @media (max-width: 600px) {
-  #music-toggle {
-    font-size: 1.8rem;
-    top: 15px;
-    right: 15px;
+  .envelope {
+    width: 320px;
+    height: 220px;
   }
+
+  .book {
+    padding: 30px 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.back-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 22px;
+  background: #0288d1;
+  color: white;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.25s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
 }

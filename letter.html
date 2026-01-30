@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For You 💌</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+
+  <body class="locked">
+    <!-- Floating Flowers Background -->
+    <div class="flowers" id="flowers">
+      <span style="left: 10%; animation-delay: 0s;">🌸</span>
+      <span style="left: 25%; animation-delay: 2s;">🌷</span>
+      <span style="left: 40%; animation-delay: 4s;">🌹</span>
+      <span style="left: 60%; animation-delay: 1s;">💐</span>
+      <span style="left: 75%; animation-delay: 3s;">🌺</span>
+      <span style="left: 90%; animation-delay: 5s;">🌸</span>
+    </div>
+
+    <!-- Music -->
+    <audio id="bg-music" src="music/love like you.mp3" loop></audio>
+
+    <!-- Envelope Screen -->
+    <div class="container" id="intro">
+      <div class="envelope" id="envelope">
+        <div class="flap"></div>
+
+        <div class="front">
+          <p>
+            To: My Beloved Mora ❤️ <br />
+            From: Your Secret Admirer 💕
+          </p>
+          <span>Click to Open 💌</span>
+        </div>
+      </div>
+
+      <p class="message" id="message">Click the envelope 💌</p>
+    </div>
+
+    <!-- Book Section -->
+    <div class="book hidden" id="book">
+
+      <!-- Page 1 -->
+      <div class="page active">
+        <h1>My Love Letter 💖</h1>
+        <p>
+          Happy Valentine’s Day, my love.<br /><br />
+          I wanted to give you something special, something you can keep forever.
+          Every moment with you feels like magic, and I’m so grateful for you.<br /><br />
+          I love you endlessly. ❤️
+        </p>
+      </div>
+
+         <!-- Page 2 (NEW) -->
+      <div class="page">
+        <h1>Things I Love About You 💗</h1>
+        <ul>
+          <li>You always know how to make me smile.</li>
+          <li>Your kindness is the most beautiful thing about you.</li>
+          <li>You make even ordinary days feel special.</li>
+          <li>You are my safe place.</li>
+          <li>I love everything that makes you <b>you</b>.</li>
+        </ul>
+      </div>
+
+        <!-- Page 3 -->
+        <div class="page">
+        <h1>Your Favorite Characters ✨</h1>
+
+        <div class="cards">
+
+            <!-- Character 1 -->
+            <div class="card">
+            <img src="Images/bucky.webp" alt="Character 1" />
+            <p>Bucky Barnes 🦾</p>
+            </div>
+
+            <!-- Character 2 -->
+            <div class="card">
+            <img src="Images/sukuna.webp" alt="Character 2" />
+            <p>Ryōmen Sukuna 👹</p>
+            </div>
+        </div>
+
+        <p class="small-note">
+            The characters you love say so much about you… and I adore that.
+        </p>
+        </div>
+
+      <!-- Page 4 -->
+      <div class="page">
+        <h1>A Little Thing I’ll Never Forget 💚</h1>
+        <img src="Images/loki2.webp" />
+        <p>You saw something I loved… and made it even more special.</p>
+      </div>
+
+      <!-- Page 5 -->
+      <div class="page">
+        <h1>When I Realized How Much I Mean to You 💖</h1>
+        <img src="Images/mora.webp" />
+        <p>And somehow it was the most beautiful thing I’ve ever read.</p>
+      </div>
+
+      <!-- Page 6 (Ending) -->
+      <div class="page">
+        <h1>Forever Us ✨</h1>
+        <img src="Images/bike.jpg" />
+        <p>
+          No matter what happens, I want you to always remember one thing:
+          you are deeply loved, endlessly appreciated, and my favorite person
+          in the world. ❤️
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="nav">
+        <button id="prev">⬅</button>
+        <button id="next">➡</button>
+      </div>
+    </div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle">🎵</button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
